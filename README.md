@@ -6,3 +6,12 @@ Install Minikube: https://minikube.sigs.k8s.io/docs/start/
 Install kubectl: https://kubernetes.io/docs/tasks/tools/
 
 Install Docker: https://www.docker.com/get-started/
+
+# the directory tree must be look like as below:
+python-k8s-app/
+├── app/
+│   └── hello.py
+├── Dockerfile
+├── k8s/
+│   ├── deployment.yaml
+│   └── service.yaml
