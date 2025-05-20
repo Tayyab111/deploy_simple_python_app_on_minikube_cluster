@@ -1,0 +1,4 @@
+1) Start the Minikube cluster using the Docker driver:
+$ minikube start --driver=docker
+
+2) 
