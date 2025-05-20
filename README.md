@@ -15,3 +15,24 @@ python-k8s-app/
 ├── k8s/
 │   ├── deployment.yaml
 │   └── service.yaml
+
+# starting the Minikube cluster.
+
+1) Start the Minikube cluster using the Docker driver:
+   $ minikube start --driver=docker
+
+2) Build the image inside Minikube’s Docker (no push to registry needed):
+   $ eval $(minikube docker-env)
+3) build the Docker image from the docker file.
+   $ docker build -t python-k8s-app .
+4) deployt the app to minikube:
+   $ kubectl apply -f k8s/deployment.yaml
+   $kubectl apply -f k8s/service.yaml
+5) Access the App
+   $ minikube service python-app-service
+   This command will open your browser with the app URL like:
+   http://127.0.0.1:30007
+   You should see on your browser:
+   Hello from Minikube!
+# Congratulation you Successfully deplyed the simple Python app on minikube cluster.
+Note: if you want to see the pods run: kubectl get pods
