@@ -36,3 +36,27 @@ python-k8s-app/
    Hello from Minikube!
 # Congratulation you Successfully deplyed the simple Python app on minikube cluster.
 Note: if you want to see the pods run: kubectl get pods
+
+# now if you want to deploy Prometheus and grafana using Helm
+1) Install Helm
+   $ curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+   
+2) then add Prometheus & Grafana Helm Repos
+   $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+   $ helm repo add grafana https://grafana.github.io/helm-charts
+   $ helm repo update
+   
+3) Install Prometheus
+   $ helm install prometheus prometheus-community/prometheus
+   
+4) Check it's running:
+   $ kubectl get pods -l "release=prometheus"
+   
+5) Install Grafana
+   $ helm install grafana grafana/grafana --set adminPassword='admin123'
+7) Expose Grafana:
+   $ kubectl port-forward svc/grafana 3000:80
+   
+Now open your browser: http://localhost:3000/
+and put 🧑 Username: admin
+🔐 Password: admin123
